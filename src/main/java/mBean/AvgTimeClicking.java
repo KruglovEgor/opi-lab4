@@ -19,7 +19,7 @@ public class AvgTimeClicking implements AvgTimeClickingMBean, Serializable {
         long timeNow = System.currentTimeMillis();
         sumOfClickTime += timeNow-lastClickTime;
         lastClickTime = timeNow;
-        avgTime = sumOfClickTime / countOfClicks;
+        avgTime = (countOfClicks > 1) ? sumOfClickTime / (countOfClicks - 1) : -1;
     }
 
     @Override
