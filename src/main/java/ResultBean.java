@@ -2,9 +2,11 @@ import entity.Result;
 import entity.Type;
 import helping.ValueValidator;
 import lombok.Getter;
+import mBean.PointCounter;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -25,6 +27,10 @@ public class ResultBean implements Serializable {
     @PersistenceContext(unitName = "table")
     private EntityManager entityManager;
     private EntityTransaction entityTransaction;
+
+    @Inject
+    private PointCounter pointCounter;
+
 
     public ResultBean(){
         connectToDB();
@@ -72,6 +78,12 @@ public class ResultBean implements Serializable {
                 System.out.println("New result " + newResult);
                 entityManager.persist(newResult);
                 entityTransaction.commit();   
+            }
+
+            pointCounter.updatePointCount();
+            if (newResult.isHit()){
+                pointCounter.updateCorrectPointCount();
+                System.out.println(pointCounter.getPointCount());
             }
 
             // Очистка newResult для следующего ввода
