@@ -81,9 +81,11 @@ public class ResultBean implements Serializable {
             }
 
             pointCounter.updatePointCount();
+            if (pointCounter.getPointCount() % 15 == 0){
+                pointCounter.makeNewNotification();
+            }
             if (newResult.isHit()){
                 pointCounter.updateCorrectPointCount();
-                System.out.println(pointCounter.getPointCount());
             }
 
             // Очистка newResult для следующего ввода

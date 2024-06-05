@@ -8,5 +8,8 @@ public interface PointCounterMBean {
 
     long getCorrectPointCount();
     long getPointCount();
+
+    void makeNewNotification();
+
     MBeanNotificationInfo[] getNotificationInfo();
 }
