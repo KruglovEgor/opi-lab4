@@ -18,6 +18,9 @@ public class SimpleAgent {
     @Inject
     private PointCounter pointCounter;
 
+    @Inject
+    private AvgTimeClicking avgTimeClicking;
+
     public SimpleAgent(){}
 
     @PostConstruct
@@ -28,6 +31,10 @@ public class SimpleAgent {
             objectName = new ObjectName("SimpleAgent:type=PointCounter");
             if (!server.isRegistered(objectName)) {
                 server.registerMBean(pointCounter, objectName);
+            }
+            objectName = new ObjectName("SimpleAgent:type=AvgTimeClicking");
+            if (!server.isRegistered(objectName)) {
+                server.registerMBean(avgTimeClicking, objectName);
             }
         } catch (Exception e) {
             e.printStackTrace();

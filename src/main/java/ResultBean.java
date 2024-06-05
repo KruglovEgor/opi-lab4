@@ -2,6 +2,7 @@ import entity.Result;
 import entity.Type;
 import helping.ValueValidator;
 import lombok.Getter;
+import mBean.AvgTimeClicking;
 import mBean.PointCounter;
 
 import javax.faces.bean.ManagedBean;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 
 import java.util.List;
 
+import static entity.Type.CLICK;
 import static helping.HitValidator.isHit;
 import static helping.TimeManager.getCurrentTimestamp;
 
@@ -30,6 +32,9 @@ public class ResultBean implements Serializable {
 
     @Inject
     private PointCounter pointCounter;
+
+    @Inject
+    private AvgTimeClicking avgTimeClicking;
 
 
     public ResultBean(){
@@ -87,6 +92,11 @@ public class ResultBean implements Serializable {
             if (newResult.isHit()){
                 pointCounter.updateCorrectPointCount();
             }
+
+            if (newResult.getType() == CLICK){
+                avgTimeClicking.updateAvgTime();
+            }
+
 
             // Очистка newResult для следующего ввода
             newResult = new Result();
