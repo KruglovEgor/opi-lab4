@@ -9,30 +9,41 @@ import java.io.Serializable;
 @Named
 @ApplicationScoped
 public class PointCounter extends NotificationBroadcasterSupport implements PointCounterMBean, Serializable {
-    private long pointCounter = 0L;
-    private long correctPointCounter = 0L;
+    private long pointCount = 0L;
+    private long correctPointCount = 0L;
     private long sequenceNumber = 0L;
 
     public  PointCounter(){}
 
 
     @Override
-    public void updatePointCount() {pointCounter++;}
+    public void updatePointCount() {pointCount++;}
 
     @Override
     public void updateCorrectPointCount() {
-        correctPointCounter++;
+        correctPointCount++;
     }
 
     @Override
     public long getCorrectPointCount() {
-        return correctPointCounter;
+        return correctPointCount;
     }
 
     @Override
     public long getPointCount() {
-        return pointCounter;
+        return pointCount;
     }
+
+    @Override
+    public void setPointCount(long pointCount) {
+        this.pointCount = pointCount;
+    }
+
+    @Override
+    public void setCorrectPointCount(long correctPointCount) {
+        this.correctPointCount = correctPointCount;
+    }
+
 
     @Override
     public void makeNewNotification() {

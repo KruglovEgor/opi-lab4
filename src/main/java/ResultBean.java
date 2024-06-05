@@ -106,6 +106,9 @@ public class ResultBean implements Serializable {
             entityTransaction.commit();
             System.out.println("Results cleaned successfully!");
             entityManager.close();
+
+            pointCounter.setPointCount(0);
+            pointCounter.setCorrectPointCount(0);
         } catch (Exception e) {
             System.out.println("Results cannot be cleaned: " + e.getMessage());
         }

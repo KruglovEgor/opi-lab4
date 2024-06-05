@@ -9,6 +9,9 @@ public interface PointCounterMBean {
     long getCorrectPointCount();
     long getPointCount();
 
+    void setPointCount(long pointCount);
+    void  setCorrectPointCount(long correctPointCount);
+
     void makeNewNotification();
 
     MBeanNotificationInfo[] getNotificationInfo();
