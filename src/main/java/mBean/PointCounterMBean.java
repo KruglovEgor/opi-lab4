@@ -9,8 +9,8 @@ public interface PointCounterMBean {
     long getCorrectPointCount();
     long getPointCount();
 
-    void setPointCount(long pointCount);
-    void  setCorrectPointCount(long correctPointCount);
+    void refreshPointCount();
+    void  refreshCorrectPointCount();
 
     void makeNewNotification();
 

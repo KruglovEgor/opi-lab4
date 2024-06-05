@@ -35,13 +35,13 @@ public class PointCounter extends NotificationBroadcasterSupport implements Poin
     }
 
     @Override
-    public void setPointCount(long pointCount) {
-        this.pointCount = pointCount;
+    public void refreshPointCount() {
+        pointCount = 0;
     }
 
     @Override
-    public void setCorrectPointCount(long correctPointCount) {
-        this.correctPointCount = correctPointCount;
+    public void refreshCorrectPointCount() {
+        pointCount = 0;
     }
 
 
