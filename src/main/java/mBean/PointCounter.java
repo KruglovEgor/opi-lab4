@@ -41,7 +41,7 @@ public class PointCounter extends NotificationBroadcasterSupport implements Poin
 
     @Override
     public void refreshCorrectPointCount() {
-        pointCount = 0;
+        correctPointCount = 0;
     }
 
 
